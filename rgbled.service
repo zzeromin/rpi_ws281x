@@ -1,0 +1,14 @@
+# systemd service about auto-start rgbled.service after booting
+# path and command: nano /lib/systemd/system/rgbled.service
+
+[Unit]
+Description=RasMusicPi RGB LED Service
+
+[Service]
+ExecStartPre=/usr/bin/sh -c "sleep 3"
+ExecStart=/usr/bin/python /home/pi/rpi_ws281x/python/examples/strandtest.py
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
